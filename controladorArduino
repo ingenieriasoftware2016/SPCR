@@ -1,0 +1,44 @@
+int led1 = 12; //pin donde conecte el led
+int led2 = 13; //pin donde se conecta el led izquierod
+
+int botonDerecho = 8; // pin donde conecte el boton
+int botonIzquierdo = 9; // pin donde conecte el boton
+
+int bestado1 = HIGH; //el boton arranca en LOW pero es lo mismo en definitiva
+int bestado2 = HIGH; //el boton arranca en LOW pero es lo mismo en definitiva
+
+boolean pulsador1 = false;
+boolean pulsador2 = false;
+
+void setup() {
+pinMode(led1, OUTPUT); //seteo el pin del led como salida
+pinMode(led2, OUTPUT); //seteo el pin del led como salida
+pinMode(botonDerecho, INPUT); //seteo el pin del boton cmo entrada
+pinMode(botonIzquierdo, INPUT);
+
+}
+
+void loop() {
+  
+bestado1 = digitalRead(botonDerecho); //leo la entrada del boton
+bestado2 = digitalRead(botonIzquierdo); //leo la entrada del boton
+digitalWrite(led1, HIGH); // enciendo el led derecho
+digitalWrite(led2, HIGH); // enciendo el led izquierdo
+
+if(bestado1 == HIGH){
+  pulsador1 = !pulsador1;
+  if(pulsador1){
+digitalWrite(led1, LOW); // enciendo el led
+  }
+  delay(300);
+}
+
+if(bestado2 == HIGH){
+  pulsador2 = !pulsador2;
+  if(pulsador2){
+digitalWrite(led2, LOW); // enciendo el led
+  }
+delay(300);
+}
+
+}
